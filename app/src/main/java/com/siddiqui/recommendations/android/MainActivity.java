@@ -115,13 +115,4 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
     }
-
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        Intent intent = new Intent(this, BusinessListActivity.class);
-        startActivity(intent);
-    }
 }
