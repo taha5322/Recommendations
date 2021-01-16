@@ -36,42 +36,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("message");
-//        myRef.setValue("hello, world");
-//
-//        myRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                String value = snapshot.getValue(String.class);
-//                Log.d("Tag","Value is "+value);
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//                Log.w("TAG","Failed to read value",error.toException());
-//            }
-//        });
-
-//         Access a Cloud Firestore instance from your Activity
-
-//        // Enable Firestore logging
-//        FirebaseFirestore.setLoggingEnabled(true);
-//
-//        //initialising firestore?
-//        FirebaseApp.initializeApp(this);
-
-
-
+        //Init firebase
+        FirebaseApp.initializeApp(this);
         db = FirebaseFirestore.getInstance();
-//         Create a new user with a first and last name
 
-//        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-//                .setCacheSizeBytes(FirebaseFirestoreSettings.CACHE_SIZE_UNLIMITED)
-//                .build();
-//        db.setFirestoreSettings(settings);
-
-
+        fetchData();
     }
 
     public void addDate(){
@@ -100,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void fetchData(){
+    public void fetchData() {
 
         //fetchng data
         db.collection("users")
@@ -111,13 +80,13 @@ public class MainActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("TAG", document.getId() + " => " + document.getData());
+                                System.out.println("TAGGGG"+document.getData());
                             }
                         } else {
                             Log.w("TAG", "Error getting documents.", task.getException());
+                            System.out.println();
                         }
                     }
                 });
     }
-
-
 }
