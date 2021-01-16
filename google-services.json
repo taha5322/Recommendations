@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "627528724114",
+    "firebase_url": "https://reccomendations-default-rtdb.firebaseio.com",
+    "project_id": "reccomendations",
+    "storage_bucket": "reccomendations.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627528724114:android:dee7201adad60e3ea8404b",
+        "android_client_info": {
+          "package_name": "com.siddiqui.recommendations"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627528724114-3ujigbsnbcedd8dsr81fu36hlh9o09e1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaqAyCmxnp7ywdPlnqGM__87VIGLdVPFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627528724114-3ujigbsnbcedd8dsr81fu36hlh9o09e1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
