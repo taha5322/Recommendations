@@ -7,15 +7,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 // Created by Taha Siddiqui
 // 16/01/21
-public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.ViewHolder>{
+public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder>{
     @NonNull
     @Override
-    public BusinessAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ServicesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return null;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull BusinessAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ServicesAdapter.ViewHolder holder, int position) {
 
     }
 
