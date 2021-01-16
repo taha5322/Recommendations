@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".android.businesslist.BusinessListActivity"
-            android:parentActivityName=".android.MainActivity"/>
+        <activity android:name=".android.businessdetail.BusinessDetailActivity"></activity>
+        <activity
+            android:name=".android.businesslist.BusinessListActivity"
+            android:parentActivityName=".android.MainActivity" />
         <activity android:name=".android.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -10,30 +10,46 @@ import androidx.recyclerview.widget.RecyclerView
 import com.siddiqui.recommendations.R
 import com.siddiqui.recommendations.android.Business
 
-class BusinessListAdapter() : ListAdapter<Business, BusinessListAdapter.ViewHolder>(ItemDiffCallback()) {
+class BusinessListAdapter(private val clickListener: BusinessListItemListener) : ListAdapter<Business, BusinessListAdapter.ViewHolder>(ItemDiffCallback()) {
 
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        val name: TextView
-        val address: TextView
-//        val id: Long
-        init {
-            name = view.findViewById(R.id.business_name)
-            address = view.findViewById(R.id.busniness_address)
+
+        private var id: Long = 0L
+        private val name: TextView = view.findViewById(R.id.business_name)
+        private val address: TextView = view.findViewById(R.id.business_address)
+        private val clickable: View = view.findViewById(R.id.single_business_selectable_item)
+
+        fun bind(business: Business, clickListener: BusinessListItemListener) {
+            this.name.text = business.name
+            this.address.text = business.address
+            this.id = business.id
+            clickable.setOnClickListener {
+                clickListener.onClick(business)
+            }
+        }
+
+        companion object {
+            fun from(parent: ViewGroup): ViewHolder {
+                val view = LayoutInflater.from(parent.context)
+                        .inflate(R.layout.business_list_item, parent, false)
+                return ViewHolder(view)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.business_list_item, parent, false)
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.name.text = getItem(position).name
-        holder.address.text = getItem(position).address
+        holder.bind(getItem(position), clickListener)
     }
 
+}
+
+interface BusinessListItemListener {
+    fun onClick(business: Business)
 }
 
 class ItemDiffCallback: DiffUtil.ItemCallback<Business>() {

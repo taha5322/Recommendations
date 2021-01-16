@@ -12,9 +12,15 @@ import android.widget.Toolbar;
 
 import com.siddiqui.recommendations.R;
 import com.siddiqui.recommendations.android.Business;
+import com.siddiqui.recommendations.android.businessdetail.BusinessDetailActivity;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class BusinessListActivity extends AppCompatActivity {
 
@@ -24,14 +30,24 @@ public class BusinessListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_business_list);
 
         // get intent args
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         String category = intent.getStringExtra("Category");
 
-        BusinessListViewModel viewModel = new ViewModelProvider(this, new BusinessListViewModelFactory())
+        final BusinessListViewModel viewModel = new ViewModelProvider(this, new BusinessListViewModelFactory())
                 .get(BusinessListViewModel.class);
 
+        // adapter click listener
+        final BusinessListAdapter adapter = new BusinessListAdapter(new BusinessListItemListener() {
+            @Override
+            public void onClick(@NotNull Business business) {
+                Intent detailIntent = new Intent(getApplicationContext(), BusinessDetailActivity.class);
+                detailIntent.putExtra("Business id", business.getId().toString());
+                startActivity(detailIntent);
+            }
+        });
+
+        // observe changes to recyclerview list
         RecyclerView recyclerView = findViewById(R.id.business_list_recycler_view);
-        final BusinessListAdapter adapter = new BusinessListAdapter();
         viewModel.getBusinessList().observe(this, new Observer<List<Business>>() {
             @Override
             public void onChanged(List<Business> list) {
@@ -41,7 +57,7 @@ public class BusinessListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        // set toolbar
+        // set toolbar title and up button
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(category);
 
