@@ -6,12 +6,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import com.siddiqui.recommendations.R;
 import com.siddiqui.recommendations.android.Business;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BusinessListActivity extends AppCompatActivity {
 
@@ -19,6 +22,10 @@ public class BusinessListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_business_list);
+
+        // get intent args
+        Intent intent = getIntent();
+        String category = intent.getStringExtra("Category");
 
         BusinessListViewModel viewModel = new ViewModelProvider(this, new BusinessListViewModelFactory())
                 .get(BusinessListViewModel.class);
@@ -34,6 +41,9 @@ public class BusinessListActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        // set toolbar
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(category);
 
 
     }
