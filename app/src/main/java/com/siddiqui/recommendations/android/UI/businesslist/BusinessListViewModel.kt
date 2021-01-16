@@ -1,12 +1,10 @@
-package com.siddiqui.recommendations.android.businesslist
+package com.siddiqui.recommendations.android.UI.businesslist
 
-import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.siddiqui.recommendations.android.Business
-import com.siddiqui.recommendations.android.businessdetail.BusinessDetailActivity
 
 class BusinessListViewModel: ViewModel() {
 

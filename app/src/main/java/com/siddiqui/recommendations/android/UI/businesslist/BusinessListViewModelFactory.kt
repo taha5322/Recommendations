@@ -1,4 +1,4 @@
-package com.siddiqui.recommendations.android.businesslist
+package com.siddiqui.recommendations.android.UI.businesslist
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

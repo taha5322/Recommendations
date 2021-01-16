@@ -1,4 +1,4 @@
-package com.siddiqui.recommendations.android.businesslist;
+package com.siddiqui.recommendations.android.UI.businesslist;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -8,19 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Toolbar;
 
 import com.siddiqui.recommendations.R;
 import com.siddiqui.recommendations.android.Business;
-import com.siddiqui.recommendations.android.businessdetail.BusinessDetailActivity;
+import com.siddiqui.recommendations.android.UI.businessdetail.BusinessDetailActivity;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Objects;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 public class BusinessListActivity extends AppCompatActivity {
 

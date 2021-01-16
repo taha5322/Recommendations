@@ -1,11 +1,10 @@
-package com.siddiqui.recommendations.android.businessdetail
+package com.siddiqui.recommendations.android.UI.businessdetail
 
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.siddiqui.recommendations.R
-import java.util.*
 
 class BusinessDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

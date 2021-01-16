@@ -1,4 +1,4 @@
-package com.siddiqui.recommendations.android.businesslist
+package com.siddiqui.recommendations.android.UI.businesslist
 
 import android.view.LayoutInflater
 import android.view.View
