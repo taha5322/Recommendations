@@ -1,4 +1,4 @@
-package com.siddiqui.recommendations.UI;
+package com.siddiqui.recommendations.ui;
 
 import android.graphics.drawable.Drawable;
 
@@ -9,9 +9,8 @@ public class Industry {
     private String description;
     private Drawable drawable;
 
-    public Industry(String name, String description, Drawable drawable) {
+    public Industry(String name, String description) {
         this.name = name;
-        this.drawable = drawable;
         this.description = description;
     }
 
