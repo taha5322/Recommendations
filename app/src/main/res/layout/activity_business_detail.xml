@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
-        android:textSize="24sp"
+        android:fontFamily="@font/autour_one"
+        android:text="Student Biryani"
+        android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,9 +24,34 @@
         android:id="@+id/business_detail_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/arvo"
+        android:text="Since it's humble begginnings on the streets of pakistan in october of 1969,
+student biryani has had only one main goal which is to let others enjoy the incredible
+biryani. Even today, in a land far away from pakistan, we continue to live by the goal that we were founded on so come pay us
+a visit if you would like a bit of that fun.
+You can also call us at (905) 812-1969"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/business_detail_name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="400dp"
+        android:fontFamily="@font/concert_one"
+        android:text="5 STARS"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/student"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@mipmap/studentbiryani"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
