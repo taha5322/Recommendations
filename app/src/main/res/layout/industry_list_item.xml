@@ -9,6 +9,9 @@
             name="business"
             type="com.siddiqui.recommendations.ui.Industry"
             />
+        <variable
+            name="clickListener"
+            type="com.siddiqui.recommendations.ui.IndustryClickListener" />
     </data>
 
     <RelativeLayout
@@ -31,6 +34,7 @@
             android:text="@{business.name}"
             android:textSize="35sp"/>
         <View
+            android:id="@+id/industry_list_item"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="?attr/selectableItemBackground"
@@ -38,6 +42,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:layout_alignParentTop="true"
+            android:onClick="@{() -> clickListener.onClick(business)}"
             />
     </RelativeLayout>
 </layout>

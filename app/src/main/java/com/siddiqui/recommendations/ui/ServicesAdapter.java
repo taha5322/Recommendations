@@ -15,13 +15,15 @@ import java.util.List;
 // 16/01/21
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder>{
 
+    private final IndustryClickListener clickListener;
     private Context context;
     private List<com.siddiqui.recommendations.ui.Industry> industries;
     IndustryListItemBinding binding;
 
-    public ServicesAdapter(Context context,List<com.siddiqui.recommendations.ui.Industry> services){
+    public ServicesAdapter(Context context,List<com.siddiqui.recommendations.ui.Industry> services,
+                           IndustryClickListener clickListener){
         this.context = context;
-
+        this.clickListener = clickListener;
         industries = services;
     }
 
@@ -30,12 +32,12 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     public ServicesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.getContext()), R.layout.industry_list_item,parent,false);
-        return new ViewHolder(binding);
+        return new ViewHolder(binding, clickListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ServicesAdapter.ViewHolder holder, int position) {
-        Log.e("Error","This is the number" + position);
+        Log.d("Error","This is the number" + position);
         com.siddiqui.recommendations.ui.Industry industry = industries.get(position);
 
         if(holder == null){
@@ -56,14 +58,16 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         return industries.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder{
 
         public IndustryListItemBinding industryListItemBinding;
 
-        public ViewHolder(@NonNull IndustryListItemBinding itemView) {
+        public ViewHolder(@NonNull IndustryListItemBinding itemView, IndustryClickListener clickListener) {
 
             super(itemView.getRoot());
             industryListItemBinding=itemView;
+            industryListItemBinding.setClickListener(clickListener);
         }
     }
 }
+

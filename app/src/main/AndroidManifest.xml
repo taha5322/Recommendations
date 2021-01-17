@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".android.ui.businessregistration.BusinessRegistrationActivity" />
-        <activity android:name=".android.ui.businesslist.BusinessListActivity"/>
-        <activity android:name=".android.ui.businessdetail.BusinessDetailActivity" />
+        <activity android:name=".android.ui.businessregistration.BusinessRegistrationActivity"
+            android:parentActivityName=".android.MainActivity"/>
+        <activity android:name=".android.ui.businesslist.BusinessListActivity"
+            android:parentActivityName=".android.MainActivity"/>
+        <activity android:name=".android.ui.businessdetail.BusinessDetailActivity"
+            android:parentActivityName=".android.MainActivity"/>
         <activity android:name=".android.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

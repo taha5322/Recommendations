@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.siddiqui.recommendations.R
 import com.siddiqui.recommendations.android.ui.businessdetail.BusinessDetailActivity
+import com.siddiqui.recommendations.database.DatabaseBuilder
 
 class BusinessListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,8 @@ class BusinessListActivity : AppCompatActivity() {
         val category = intent.getStringExtra("Category")
 
         // viewmodel
-        val viewModel = ViewModelProvider(this, BusinessListViewModelFactory())
+        val viewModel = ViewModelProvider(this,
+                BusinessListViewModelFactory(DatabaseBuilder(this), category))
                 .get(BusinessListViewModel::class.java)
 
         // adapter click listener
