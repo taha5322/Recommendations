@@ -1,4 +1,4 @@
-package com.siddiqui.recommendations.android.UI.businessdetail
+package com.siddiqui.recommendations.android.ui.businessdetail
 
 import android.os.Bundle
 import android.util.Log
@@ -12,7 +12,7 @@ class BusinessDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_business_detail)
 
         val businessId = intent.getStringExtra("Business id")
-        Log.d(TAG, "Business id: ${businessId.toString()}")
+        Log.d(TAG, "Business id: $businessId")
 
         val name: TextView = findViewById(R.id.business_detail_name)
         val address: TextView = findViewById(R.id.business_detail_address)

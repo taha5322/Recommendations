@@ -1,39 +1,28 @@
-package com.siddiqui.recommendations.android.UI.businesslist
+package com.siddiqui.recommendations.android.ui.businesslist
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.siddiqui.recommendations.R
 import com.siddiqui.recommendations.android.Business
+import com.siddiqui.recommendations.databinding.BusinessListItemBinding
 
 class BusinessListAdapter(private val clickListener: BusinessListItemListener) : ListAdapter<Business, BusinessListAdapter.ViewHolder>(ItemDiffCallback()) {
 
 
-    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
-
-        private var id: Long = 0L
-        private val name: TextView = view.findViewById(R.id.business_name)
-        private val address: TextView = view.findViewById(R.id.business_address)
-        private val clickable: View = view.findViewById(R.id.single_business_selectable_item)
+    class ViewHolder private constructor(private val binding: BusinessListItemBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(business: Business, clickListener: BusinessListItemListener) {
-            this.name.text = business.name
-            this.address.text = business.address
-            this.id = business.id
-            clickable.setOnClickListener {
-                clickListener.onClick(business)
-            }
+            binding.business = business
+            binding.clickListener = clickListener
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
-                val view = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.business_list_item, parent, false)
-                return ViewHolder(view)
+                val inflater = LayoutInflater.from(parent.context)
+                val binding = BusinessListItemBinding.inflate(inflater, parent, false)
+                return ViewHolder(binding)
             }
         }
     }
@@ -48,8 +37,8 @@ class BusinessListAdapter(private val clickListener: BusinessListItemListener) :
 
 }
 
-interface BusinessListItemListener {
-    fun onClick(business: Business)
+class BusinessListItemListener(val clickListener: (id: Long) -> Unit) {
+    fun onClick(business: Business) = clickListener(business.id)
 }
 
 class ItemDiffCallback: DiffUtil.ItemCallback<Business>() {

@@ -1,4 +1,4 @@
-package com.siddiqui.recommendations.android.UI.businesslist
+package com.siddiqui.recommendations.android.ui.businesslist
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -14,10 +14,10 @@ class BusinessListViewModel: ViewModel() {
 
     init {
         _businessList.value = listOf(
-                Business("Tom's Burgers", "123 Main st", 1L),
-                Business("Bean Cafe", "456 Yonge st", 2L),
-                Business("Mary's Supermarket", "789 King st", 3L),
-                Business("Bob's Auto Shop", "237 Bear st", 4L)
+                Business("Tom's Burgers", "123 Main st", "456-812-4511", "Free fries with burger!", 1L),
+                Business("Bean Cafe", "456 Yonge st", "487-996-1302", "None currently.", 2L),
+                Business("Mary's Supermarket", "789 King st", "156-8778-5645", "Meats half price!", 3L),
+                Business("Bob's Auto Shop", "237 Bear st", "759-756-7147", "25% off oil change until May 17th!", 4L)
         )
     }
 
