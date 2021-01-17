@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.siddiqui.recommendations.R;
-import com.siddiqui.recommendations.databinding.BusinessListItemBinding;
-
+import com.siddiqui.recommendations.databinding.IndustryListItemBinding;
 import java.util.List;
 
 // Created by Taha Siddiqui
@@ -19,7 +17,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
     private Context context;
     private List<Industry> industries;
-    BusinessListItemBinding binding;
+    IndustryListItemBinding binding;
 
     public ServicesAdapter(Context context,List<Industry> services){
         this.context = context;
@@ -31,8 +29,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     @Override
     public ServicesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = DataBindingUtil
-                .inflate(LayoutInflater.from(parent.getContext()), R.layout.business_list_item,parent,false);
-
+                .inflate(LayoutInflater.from(parent.getContext()), R.layout.industry_list_item,parent,false);
         return new ViewHolder(binding);
     }
 
@@ -60,9 +57,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public BusinessListItemBinding businessListItemBinding;
 
-        public ViewHolder(@NonNull BusinessListItemBinding itemView) {
+        public IndustryListItemBinding industryListItemBinding;
+
+        public ViewHolder(@NonNull IndustryListItemBinding itemView) {
+
             super(itemView.getRoot());
             businessListItemBinding=itemView;
         }

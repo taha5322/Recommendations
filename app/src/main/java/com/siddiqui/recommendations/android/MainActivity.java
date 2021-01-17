@@ -7,6 +7,13 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.siddiqui.recommendations.R;
+import com.siddiqui.recommendations.ui.Industry;
+import com.siddiqui.recommendations.ui.ServicesAdapter;
+import com.siddiqui.recommendations.database.DatabaseBuilder;
+import com.siddiqui.recommendations.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import com.siddiqui.recommendations.ui.Industry;
 import com.siddiqui.recommendations.ui.ServicesAdapter;
@@ -20,18 +27,15 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseBuilder mBuilder;
-
+  
     private ServicesAdapter adapter;
 
     private ActivityMainBinding binding;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
         adapter = new ServicesAdapter(this,getServices());
@@ -51,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println("main ativity"+s);
 //            }
 //        });
-
-
     }
 
     private List<Industry> getServices(){
