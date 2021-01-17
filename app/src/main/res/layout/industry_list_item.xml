@@ -20,8 +20,6 @@
         android:paddingBottom="8dp"
         android:layout_marginTop="300dp"
         >
-
-
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
@@ -43,3 +41,4 @@
             />
     </RelativeLayout>
 </layout>
+

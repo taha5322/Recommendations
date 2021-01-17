@@ -15,14 +15,22 @@ import com.siddiqui.recommendations.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.siddiqui.recommendations.ui.Industry;
+import com.siddiqui.recommendations.ui.ServicesAdapter;
+import com.siddiqui.recommendations.database.DatabaseBuilder;
+import com.siddiqui.recommendations.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseBuilder mBuilder;
+  
     private ServicesAdapter adapter;
 
     private ActivityMainBinding binding;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding.businesses.setAdapter(adapter);
         binding.businesses.setLayoutManager(new LinearLayoutManager(this));
-
 
         //Initialise database builder
         mBuilder = new DatabaseBuilder(MainActivity.this);
@@ -48,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println("main ativity"+s);
 //            }
 //        });
-
-
     }
 
     private List<Industry> getServices(){
@@ -64,8 +69,4 @@ public class MainActivity extends AppCompatActivity {
         services.add(service1);
         return services;
     }
-
-
-
-
 }

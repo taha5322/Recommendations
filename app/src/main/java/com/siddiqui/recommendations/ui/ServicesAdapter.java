@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.siddiqui.recommendations.R;
 import com.siddiqui.recommendations.databinding.IndustryListItemBinding;
-
 import java.util.List;
 
 // Created by Taha Siddiqui
@@ -32,7 +30,6 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     public ServicesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.getContext()), R.layout.industry_list_item,parent,false);
-
         return new ViewHolder(binding);
     }
 
@@ -60,9 +57,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public IndustryListItemBinding businessListItemBinding;
+
+        public IndustryListItemBinding industryListItemBinding;
 
         public ViewHolder(@NonNull IndustryListItemBinding itemView) {
+
             super(itemView.getRoot());
             businessListItemBinding=itemView;
         }
