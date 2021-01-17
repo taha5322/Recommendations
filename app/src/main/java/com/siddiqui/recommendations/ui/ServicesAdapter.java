@@ -1,13 +1,17 @@
 package com.siddiqui.recommendations.ui;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import com.siddiqui.recommendations.R;
+import com.siddiqui.recommendations.android.ui.businessdetail.BusinessDetailActivity;
+import com.siddiqui.recommendations.android.ui.businesslist.BusinessListActivity;
 import com.siddiqui.recommendations.databinding.IndustryListItemBinding;
 import java.util.List;
 
@@ -34,6 +38,11 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull ServicesAdapter.ViewHolder holder, int position) {
         Log.e("Error","This is the number" + position);
         com.siddiqui.recommendations.ui.Industry industry = industries.get(position);
@@ -47,8 +56,10 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         if(holder.industryListItemBinding == null){
             Log.e("ITEM BINDING IS EMPTY", "ITEM BINDING EMPTY");
         }
-        holder.industryListItemBinding.setBusiness(industry);
+        Industry currentIndustry = industries.get(position);
+        holder.industryListItemBinding.setIndustry(industry);
 
+        holder.industryListItemBinding.executePendingBindings();
     }
 
     @Override
@@ -56,14 +67,35 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         return industries.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public IndustryListItemBinding industryListItemBinding;
+        public int pos;
+
+        public void setPos(int i){
+            pos = i;
+        }
 
         public ViewHolder(@NonNull IndustryListItemBinding itemView) {
 
             super(itemView.getRoot());
             industryListItemBinding=itemView;
+
+            industryListItemBinding.activeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Industry currentInd = industries.get(getAdapterPosition());
+                    Intent intent = new Intent(context, BusinessListActivity.class);
+                    intent.putExtra("Industry", currentInd.getName());
+                    context.startActivity(intent);
+                }
+            });
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            System.out.println("This is the system ID"+v.getId());
         }
     }
 }
