@@ -15,7 +15,6 @@ import com.siddiqui.recommendations.databinding.ActivityMainBinding;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseBuilder mBuilder;
@@ -66,6 +65,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
 }
+
+
