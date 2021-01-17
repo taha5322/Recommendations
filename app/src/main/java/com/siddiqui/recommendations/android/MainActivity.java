@@ -1,10 +1,21 @@
 package com.siddiqui.recommendations.android;
 
 import android.content.Intent;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import android.graphics.Canvas;
+import android.graphics.ColorFilter;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.MutableLiveData;
@@ -12,8 +23,14 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.siddiqui.recommendations.R;
+
 import com.siddiqui.recommendations.android.ui.businesslist.BusinessListActivity;
 import com.siddiqui.recommendations.android.ui.businessregistration.BusinessRegistrationActivity;
+
+import com.siddiqui.recommendations.android.ui.BusinessRegistrationActivity;
+import com.siddiqui.recommendations.ui.Industry;
+import com.siddiqui.recommendations.ui.ServicesAdapter;
+
 import com.siddiqui.recommendations.database.DatabaseBuilder;
 import com.siddiqui.recommendations.databinding.ActivityMainBinding;
 import com.siddiqui.recommendations.ui.Industry;
@@ -34,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private ServicesAdapter adapter;
 
     private ActivityMainBinding binding;
+    private Button regestrationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,26 +93,39 @@ public class MainActivity extends AppCompatActivity {
 //                Log.d(TAG, "main ativity"+s);
 //            }
 //        });
+
 //
 //        mBuilder.addOrUpdateData("Business","Barbers",
 //                "Magicuts","Magicuts", "test", "test 2");
+
     }
 
     private List<Industry> getServices() {
         List<Industry> services = new ArrayList<>();
 
-        Industry service1 = new Industry("Restaurants", "Everyone loves food");
+
+        Industry service1 = new Industry("Restaurants","A wide range of cuisines at your fingertips",R.mipmap.rest);
         services.add(service1);
-        service1 = new Industry("Barbershops", "Places to get those beautiful hair cut");
+        service1 = new Industry("Barbershops","Places to get those beautiful hair cut",R.mipmap.barber);
         services.add(service1);
-        service1 = new Industry("Mechanics", "Your car wouldn't mind one");
+        service1 = new Industry("Mechanics","Your car wouldn't mind one",R.mipmap.mechanic);
         services.add(service1);
-        service1 = new Industry("Key cutter", "LOL");
+        service1 = new Industry("Grocery Store","Who doesn't love doing them",R.mipmap.grocery);
+        services.add(service1);
+        service1 = new Industry("Thrift stores","Money is good; spend it wisely",R.mipmap.thrift);
+        services.add(service1);
+        service1 = new Industry("Bars","For those weekends after long weeks",R.mipmap.bars);
+        services.add(service1);
+        service1 = new Industry("Tutoring","Knowledge is the most powerful asset in this day and age",R.mipmap.tutoring);
+        services.add(service1);
+        service1 = new Industry("Misc","Misc",R.mipmap.ic_launcher_round);
+
         services.add(service1);
         return services;
 //        return mBuilder
     }
 
     private static final String TAG = "MainActivity";
+
 
 }

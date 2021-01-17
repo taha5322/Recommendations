@@ -21,6 +21,7 @@ class BusinessListViewModel(databaseBuilder: DatabaseBuilder, category: String):
 
 
     init {
+
         if (category == "Restaurants") {
             _businessList.value = listOf(
                     Business("Tom's Burgers", "123 Main st", "456-812-4511", "Free fries with burger!", 1L),
@@ -38,6 +39,7 @@ class BusinessListViewModel(databaseBuilder: DatabaseBuilder, category: String):
 
 //        _list.value = databaseBuilder.getBusinessesByCategory(category).value
         Log.d(TAG, databaseBuilder.fetchDataByCategory("Businesses", category).toString())
+
     }
 
     fun onClick(id: Long) {
