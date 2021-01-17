@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Recommendations</string>
+    <string name="address">Address</string>
+    <string name="business_name">Business Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="register">Register</string>
+    <string name="registration">Registration</string>
 </resources>
