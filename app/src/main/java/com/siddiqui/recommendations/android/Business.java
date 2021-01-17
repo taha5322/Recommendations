@@ -10,6 +10,7 @@ public class Business {
         this.address = address;
         this.phone = phone;
         this.discounts = discounts;
+
         this.id = id;
     }
 
@@ -52,4 +53,5 @@ public class Business {
     public void setDiscounts(String discounts) {
         this.discounts = discounts;
     }
+
 }
