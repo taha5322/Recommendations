@@ -11,9 +11,9 @@ class BusinessListViewModel(databaseBuilder: DatabaseBuilder, category: String):
 
 
 
-    private var _list = MutableLiveData<List<String>>()
-    val list: LiveData<List<String>>
-        get() = _list
+//    private var _list = MutableLiveData<List<String>>()
+//    val list: LiveData<List<String>>
+//        get() = _list
 
     private var _businessList = MutableLiveData<List<Business>>()
     val businessList: LiveData<List<Business>>
@@ -21,13 +21,22 @@ class BusinessListViewModel(databaseBuilder: DatabaseBuilder, category: String):
 
 
     init {
-        _businessList.value = listOf(
-                Business("Tom's Burgers", "123 Main st", "456-812-4511", "Free fries with burger!", 1L),
-                Business("Bean Cafe", "456 Yonge st", "487-996-1302", "None currently.", 2L),
-                Business("Mary's Supermarket", "789 King st", "156-8778-5645", "Meats half price!", 3L),
-                Business("Bob's Auto Shop", "237 Bear st", "759-756-7147", "25% off oil change until May 17th!", 4L)
-        )
-        _list.value = databaseBuilder.getBusinessesByCategory(category).value
+        if (category == "Restaurants") {
+            _businessList.value = listOf(
+                    Business("Tom's Burgers", "123 Main st", "456-812-4511", "Free fries with burger!", 1L),
+                    Business("Bean Cafe", "456 Yonge st", "487-996-1302", "None currently.", 2L),
+                    Business("Mary's Diner", "789 King st", "156-8778-5645", "Meats half price!", 3L)
+            )
+        } else {
+            _businessList.value = listOf(
+                    Business("Tom's Barber Shop", "123 Main st", "456-812-4511", "10% off all cuts", 1L),
+                    Business("Barshop Boyz", "456 Yonge st", "487-996-1302", "None currently.", 2L),
+                    Business("Mina's Hair Salon", "789 King st", "156-8778-5645", "Meats half price!", 3L),
+                    Business("Barber Bob", "237 Bear st", "759-756-7147", "25% off oil change until May 17th!", 4L)
+            )
+        }
+
+//        _list.value = databaseBuilder.getBusinessesByCategory(category).value
         Log.d(TAG, databaseBuilder.fetchDataByCategory("Businesses", category).toString())
     }
 

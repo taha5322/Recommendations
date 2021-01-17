@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.siddiqui.recommendations.R
@@ -33,7 +34,8 @@ class BusinessRegistrationActivity : AppCompatActivity() {
 
         button.setOnClickListener {
             databaseBuilder.addOrUpdateData("Business", category.toString(), business.name, business.name, business.address, business.phone)
-            Log.d(Companion.TAG, "Register clicked!")
+//            Log.d(Companion.TAG, "Register clicked!")
+            Toast.makeText(this, "Registration Complete!", Toast.LENGTH_SHORT).show()
         }
 
 

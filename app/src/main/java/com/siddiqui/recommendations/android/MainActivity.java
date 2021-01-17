@@ -67,30 +67,32 @@ public class MainActivity extends AppCompatActivity {
         mBuilder = new DatabaseBuilder(MainActivity.this);
 
         //Fetching data example
-        MutableLiveData<String> data = mBuilder.fetchData("Business","Barbers",
-                "Magicuts","Magicuts");
-        data.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Log.d(TAG, "main ativity"+s);
-            }
-        });
-
-        mBuilder.addOrUpdateData("Business","Barbers",
-                "Magicuts","Magicuts", "test", "test 2");
+//        MutableLiveData<String> data = mBuilder.fetchData("Business","Barbers",
+//                "Magicuts","Magicuts");
+//        data.observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//                Log.d(TAG, "main ativity"+s);
+//            }
+//        });
+//
+//        mBuilder.addOrUpdateData("Business","Barbers",
+//                "Magicuts","Magicuts", "test", "test 2");
     }
 
     private List<Industry> getServices() {
         List<Industry> services = new ArrayList<>();
-        Industry service1 = new Industry("Barbershops", "Places to get those beautiful hair cut");
+
+        Industry service1 = new Industry("Restaurants", "Everyone loves food");
         services.add(service1);
-        service1 = new Industry("Restaurants", "Everyone loves food");
+        service1 = new Industry("Barbershops", "Places to get those beautiful hair cut");
         services.add(service1);
         service1 = new Industry("Mechanics", "Your car wouldn't mind one");
         services.add(service1);
         service1 = new Industry("Key cutter", "LOL");
         services.add(service1);
         return services;
+//        return mBuilder
     }
 
     private static final String TAG = "MainActivity";

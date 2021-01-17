@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.siddiqui.recommendations.R
+import com.siddiqui.recommendations.database.DatabaseBuilder
 
 class BusinessDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,7 +22,10 @@ class BusinessDetailActivity : AppCompatActivity() {
 
         // set toolbar title and up button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.title = "" // TODO(get business name from db)
+        supportActionBar?.title = "Tom's Burgers"
+
+//        val databaseBuilder = DatabaseBuilder(this)
+//        databaseBuilder.
 
     }
 
