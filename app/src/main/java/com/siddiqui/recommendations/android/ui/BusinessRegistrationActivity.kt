@@ -1,11 +1,10 @@
-package com.siddiqui.recommendations.android.UI
+package com.siddiqui.recommendations.android.ui
 
 import android.os.Bundle
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import com.siddiqui.recommendations.R
 import com.siddiqui.recommendations.android.Business
-import java.util.*
 
 class BusinessRegistrationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,7 +16,7 @@ class BusinessRegistrationActivity : AppCompatActivity() {
         val phoneNumber: EditText = findViewById(R.id.registration_phone_number)
         val discounts: EditText = findViewById(R.id.registration_discounts)
 
-        val business = Business(name.toString(), address.toString(), 1L)
+        val business = Business(name.toString(), address.toString(), "1234567894", "none", 1L)
 
         // set toolbar title and up button
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

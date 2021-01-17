@@ -37,8 +37,8 @@ class BusinessListAdapter(private val clickListener: BusinessListItemListener) :
 
 }
 
-class BusinessListItemListener(val clickListener: (id: Long) -> Unit) {
-    fun onClick(business: Business) = clickListener(business.id)
+open class BusinessListItemListener(val clickListener: (id: Long) -> Unit) {
+    open fun onClick(business: Business) = clickListener(business.id)
 }
 
 class ItemDiffCallback: DiffUtil.ItemCallback<Business>() {

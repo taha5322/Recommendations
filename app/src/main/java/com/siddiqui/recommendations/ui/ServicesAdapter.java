@@ -16,10 +16,10 @@ import java.util.List;
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder>{
 
     private Context context;
-    private List<Industry> industries;
+    private List<com.siddiqui.recommendations.ui.Industry> industries;
     IndustryListItemBinding binding;
 
-    public ServicesAdapter(Context context,List<Industry> services){
+    public ServicesAdapter(Context context,List<com.siddiqui.recommendations.ui.Industry> services){
         this.context = context;
 
         industries = services;
@@ -36,7 +36,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ServicesAdapter.ViewHolder holder, int position) {
         Log.e("Error","This is the number" + position);
-        Industry industry = industries.get(position);
+        com.siddiqui.recommendations.ui.Industry industry = industries.get(position);
 
         if(holder == null){
             Log.e("HOLDER IS NULL", "HOLDER IS NULL");
@@ -44,10 +44,10 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         if(industry==null){
             Log.e("HOUR IS NULL", "HOUR IS NULL");
         }
-        if(holder.businessListItemBinding == null){
+        if(holder.industryListItemBinding == null){
             Log.e("ITEM BINDING IS EMPTY", "ITEM BINDING EMPTY");
         }
-        holder.businessListItemBinding.setBusiness(industry);
+        holder.industryListItemBinding.setBusiness(industry);
 
     }
 
@@ -63,7 +63,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         public ViewHolder(@NonNull IndustryListItemBinding itemView) {
 
             super(itemView.getRoot());
-            businessListItemBinding=itemView;
+            industryListItemBinding=itemView;
         }
     }
 }
