@@ -19,13 +19,15 @@ import java.util.List;
 // 16/01/21
 public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHolder>{
 
+    private final IndustryClickListener clickListener;
     private Context context;
     private List<com.siddiqui.recommendations.ui.Industry> industries;
     IndustryListItemBinding binding;
 
-    public ServicesAdapter(Context context,List<com.siddiqui.recommendations.ui.Industry> services){
+    public ServicesAdapter(Context context,List<com.siddiqui.recommendations.ui.Industry> services,
+                           IndustryClickListener clickListener){
         this.context = context;
-
+        this.clickListener = clickListener;
         industries = services;
     }
 
@@ -34,7 +36,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
     public ServicesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         binding = DataBindingUtil
                 .inflate(LayoutInflater.from(parent.getContext()), R.layout.industry_list_item,parent,false);
-        return new ViewHolder(binding);
+        return new ViewHolder(binding, clickListener);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ServicesAdapter.ViewHolder holder, int position) {
-        Log.e("Error","This is the number" + position);
+        Log.d("Error","This is the number" + position);
         com.siddiqui.recommendations.ui.Industry industry = industries.get(position);
 
         if(holder == null){
@@ -67,6 +69,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         return industries.size();
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public IndustryListItemBinding industryListItemBinding;
@@ -76,17 +79,19 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
             pos = i;
         }
 
-        public ViewHolder(@NonNull IndustryListItemBinding itemView) {
+        public ViewHolder(@NonNull IndustryListItemBinding itemView, IndustryClickListener clickListener) {
 
             super(itemView.getRoot());
             industryListItemBinding=itemView;
+
+          //  industryListItemBinding.setClickListener(clickListener);
 
             industryListItemBinding.activeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Industry currentInd = industries.get(getAdapterPosition());
                     Intent intent = new Intent(context, BusinessListActivity.class);
-                    intent.putExtra("Industry", currentInd.getName());
+                    intent.putExtra("Category", currentInd.getName());
                     context.startActivity(intent);
                 }
             });
@@ -99,3 +104,4 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.ViewHo
         }
     }
 }
+

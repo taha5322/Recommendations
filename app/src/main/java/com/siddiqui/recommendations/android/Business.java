@@ -14,6 +14,13 @@ public class Business {
         this.id = id;
     }
 
+    public Business(String name, String address, String phone, String discounts) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+        this.discounts = discounts;
+    }
+
     public String getName() {
         return name;
     }

@@ -5,20 +5,41 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.siddiqui.recommendations.android.Business
+import com.siddiqui.recommendations.database.DatabaseBuilder
 
-class BusinessListViewModel: ViewModel() {
+class BusinessListViewModel(databaseBuilder: DatabaseBuilder, category: String): ViewModel() {
+
+
+
+//    private var _list = MutableLiveData<List<String>>()
+//    val list: LiveData<List<String>>
+//        get() = _list
 
     private var _businessList = MutableLiveData<List<Business>>()
     val businessList: LiveData<List<Business>>
         get() = _businessList
 
+
     init {
-        _businessList.value = listOf(
-                Business("Tom's Burgers", "123 Main st", "456-812-4511", "Free fries with burger!", 1L),
-                Business("Bean Cafe", "456 Yonge st", "487-996-1302", "None currently.", 2L),
-                Business("Student Biryani", "1010 Dream Crest Rd", "(905) 812-1969", "Meats half price!", 3L),
-                Business("Hakka Ren", "4555 Hurontario St C2", "(905) 568-1818", "25% off oil change until May 17th!", 4L)
-        )
+
+        if (category == "Restaurants") {
+            _businessList.value = listOf(
+                    Business("Tom's Burgers", "123 Main st", "456-812-4511", "Free fries with burger!", 1L),
+                    Business("Bean Cafe", "456 Yonge st", "487-996-1302", "None currently.", 2L),
+                    Business("Mary's Diner", "789 King st", "156-8778-5645", "Meats half price!", 3L)
+            )
+        } else {
+            _businessList.value = listOf(
+                    Business("Tom's Barber Shop", "123 Main st", "456-812-4511", "10% off all cuts", 1L),
+                    Business("Barshop Boyz", "456 Yonge st", "487-996-1302", "None currently.", 2L),
+                    Business("Mina's Hair Salon", "789 King st", "156-8778-5645", "Meats half price!", 3L),
+                    Business("Barber Bob", "237 Bear st", "759-756-7147", "25% off oil change until May 17th!", 4L)
+            )
+        }
+
+//        _list.value = databaseBuilder.getBusinessesByCategory(category).value
+        Log.d(TAG, databaseBuilder.fetchDataByCategory("Businesses", category).toString())
+
     }
 
     fun onClick(id: Long) {
